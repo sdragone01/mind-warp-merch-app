@@ -1,9 +1,14 @@
 
 import './App.css';
+import Auth from '../Auth/Auth';
+import React from 'react';
 
 function App() {
   return (
-    <h1> Hello World </h1>
+    <>
+
+      <Auth />
+    </>
   );
 }
 

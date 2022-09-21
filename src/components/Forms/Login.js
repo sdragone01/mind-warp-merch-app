@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import fire from '../../config/Fire';
-
+import './From.css'
 export default class Login extends Component {
     state = {
         email: '',
@@ -33,19 +33,22 @@ export default class Login extends Component {
                         type="text"
                         className="regField"
                         placeholder="Email"
-                        onChange={this.handleChange}
                         value={this.state.email}
+                        onChange={this.handleChange}
                         name="email"
                     />
+
                     <input
                         type="password"
                         className="regField"
                         placeholder="Password"
-                        onChange={this.handleChange}
                         value={this.state.password}
+                        onChange={this.handleChange}
                         name="password"
                     />
-                    <button className="regButton" onClick={this.login}>Login</button>
+
+                    <input type="submit" onClick={this.login} className="submitBtn" value="LOGIN" />
+
                 </form>
             </div>
         )

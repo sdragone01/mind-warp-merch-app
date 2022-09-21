@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import fire from '../../config/Fire';
-
+import './From.css'
 
 export default class Register extends Component {
     state = {
