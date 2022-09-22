@@ -4,7 +4,7 @@ import Register from '../../components/Forms/Register'
 import fire from '../../config/Fire';
 import Spinner from '../../assets/loader.gif';
 import Home from '../Home/Home';
-import Logo from '../../assets/logo.gif'
+
 
 import './Auth.css';
 
@@ -49,7 +49,7 @@ export default class Auth extends Component {
             <>
                 {!this.state.user ? (
                     <>
-                        <img className="Logo" src={Logo} />
+                        <h1> Hello </h1>
                         <div className="mainBlock">
 
                             {form}
