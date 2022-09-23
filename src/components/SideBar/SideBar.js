@@ -69,8 +69,9 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
             }}
         >
             <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-                <Logo />
+                <h1>Mind Warp Merch</h1>
             </Box>
+
 
             <Box sx={{ mb: 5, mx: 2.5, backgroundColor: '#e0e0e0', borderRadius: '20px' }}>
                 <Link underline="none" component={RouterLink} to="#">

@@ -65,7 +65,8 @@ export default function NavBar() {
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
-                ))}
+                ))
+                }
 
                 {['Schedule', 'Artwork', 'Settings'].map((text, index) => (
                     <ListItem button component={Link} to={text} key={text} >
