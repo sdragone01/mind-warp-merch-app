@@ -46,28 +46,32 @@ export default class Auth extends Component {
 
 
         return (
-            <>
-                {!this.state.user ? (
-                    <>
-                        <h1> Hello </h1>
-                        <div className="mainBlock">
+            <div className="mainBlock">
+                {form}
+                {!this.state.formSwitcher ?
+                    (
+                        <span className="underLine"> Not registered?
+                            <button
+                                onClick={() =>
+                                    this.formSwitcher(!this.state.formSwitcher ? 'register' : 'login')}
+                                className="linkBtn">Create an account
+                            </button>
+                        </span>
+                    ) : (
+                        <span className="underLine">Have an account already?
+                            <button
+                                onClick={() =>
+                                    this.formSwitcher(!this.state.formSwitcher ? 'register' : 'login')}
+                                className="linkBtn">Sign in here
+                            </button>
+                        </span>
+                    )
+                }
+            </div>
 
-                            {form}
-                            {
-                                !this.state.formSwitcher ?
-                                    (<span className="underLine">Not registered? <button onClick={() => this.formSwitcher(!this.state.formSwitcher ? 'register' : 'login')}
-                                        className="linkBtn">Create an account</button>
-                                    </span>) : (
-                                        <span className="underLine">Have an account already? <button onClick={() => this.formSwitcher(!this.state.formSwitcher ? 'register' : 'login')}
-                                            className="linkBtn">Sign in here</button>
-                                        </span>
-                                    )
-                            }
-                        </div>
-                    </>
-                ) : (<Main />)}
-            </>
-        );
+        )
+
+
     }
 
 
