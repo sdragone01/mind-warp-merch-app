@@ -16,6 +16,7 @@ import AvatarImg from '../../assets/illustration_avatar.png';
 import userAvatar from '../../assets/avatar_default.jpeg';
 //
 import navConfig from './NavConfig';
+import Fire from '../../config/Fire';
 
 // ----------------------------------------------------------------------
 
@@ -48,6 +49,11 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
 
     const isDesktop = useResponsive('up', 'lg');
 
+    const logOut = () => {
+        Fire.auth().signOut();
+    };
+
+
     useEffect(() => {
         if (isOpenSidebar) {
             onCloseSidebar();
@@ -66,7 +72,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
                 <Logo />
             </Box>
 
-            <Box sx={{ mb: 5, mx: 2.5, backgroundColor: '#e0e0e0', borderRadius: '20px', opacity: .8 }}>
+            <Box sx={{ mb: 5, mx: 2.5, backgroundColor: '#e0e0e0', borderRadius: '20px' }}>
                 <Link underline="none" component={RouterLink} to="#">
                     <AccountStyle >
                         <Avatar src={userAvatar} alt="photoURL" />
@@ -75,10 +81,11 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
                                 {account.displayName}
                             </Typography>
 
-
                         </Box>
                     </AccountStyle>
                 </Link>
+                <Button variant="contained" sx={{ width: '100%', backgroundColor: '#212121', color: '#fff' }} onClick={logOut} > Logout </Button>
+
             </Box>
 
             <NavSection navConfig={navConfig} />
