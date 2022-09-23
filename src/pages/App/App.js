@@ -5,6 +5,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import fire from '../../config/Fire';
 import { Routes, Route } from 'react-router-dom';
+import SideBar from '../../components/SideBar/SideBar';
 
 
 //page imorts
@@ -45,7 +46,8 @@ function App() {
 
       ) : (
         <div className="App">
-          <NavBar />
+
+          <SideBar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
