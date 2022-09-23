@@ -3,7 +3,7 @@ import Login from '../../components/Forms/Login'
 import Register from '../../components/Forms/Register'
 import fire from '../../config/Fire';
 import Spinner from '../../assets/loader.gif';
-import Home from '../Home/Home';
+import Main from '../Main/Main';
 
 
 import './Auth.css';
@@ -65,7 +65,7 @@ export default class Auth extends Component {
                             }
                         </div>
                     </>
-                ) : (<Home />)}
+                ) : (<Main />)}
             </>
         );
     }
