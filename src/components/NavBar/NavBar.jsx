@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Fire from '../../config/Fire';
+import { Link } from 'react-router-dom';
 
 //MUI Components 
 import AppBar from '@mui/material/AppBar';
@@ -25,6 +26,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
+import HomeIcon from '@mui/icons-material/Home';
 
 import './NavBar.css';
 
@@ -56,17 +58,25 @@ export default function NavBar() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Schedule', 'Create New Job', 'Artwork', 'Settings'].map((text, index) => (
-                    <ListItem button key={text}>
+                {['Home'].map((text, index) => (
+                    <ListItem button component={Link} to='/' key={text} >
                         <ListItemIcon>
-                            {index === 0 ? <CalendarMonthIcon /> : index === 1 ? <AddCircleOutlineIcon /> : index === 2 ? <ColorLensIcon /> : <SettingsIcon />}
+                            <HomeIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
 
-
+                {['Schedule', 'Artwork', 'Settings'].map((text, index) => (
+                    <ListItem button component={Link} to={text} key={text} >
+                        <ListItemIcon>
+                            {index === 0 ? <CalendarMonthIcon /> : index === 1 ? <ColorLensIcon /> : <SettingsIcon />}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
             </List>
+
             <Divider />
             <List>
                 {['Log Out'].map((text, index) => (
@@ -95,10 +105,12 @@ export default function NavBar() {
                             onClick={toggleDrawer('left', true)}
                         >
                             <MenuIcon />
+
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Hello, {currentUser.displayName}
                         </Typography>
+
 
                     </Toolbar>
                 </AppBar>

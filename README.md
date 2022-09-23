@@ -2,6 +2,7 @@
 
 - firebase
 - firebase-tools
+- react-router-dom
 - @mui/material
 - @emotion/react
 - @emotion/styled
@@ -16,7 +17,7 @@
 1. 
     npm i -g firebase-tools
 2. 
-    npm i firebase @mui/material @emotion/react @emotion/styled @mui/icons-material @mui/styled-engine-sc styled-components
+    npm i firebase @mui/material @emotion/react @emotion/styled @mui/icons-material @mui/styled-engine-sc styled-components react-router-dom
 
 
 # Start dev server 
