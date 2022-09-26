@@ -61,7 +61,7 @@ export default function SideBar2() {
 
                     width: drawerWidth,
                     flexShrink: 0,
-                    zIndex: 0,
+
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
