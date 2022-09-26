@@ -33,19 +33,32 @@ export default function SideBar2() {
             <CssBaseline />
             <AppBar
                 position="fixed"
-                sx={{ width: "100%" }}
-                zIndex={1}
+                sx={{
+                    width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    ml: { sm: `${drawerWidth}px` },
+
+                }}
             >
                 <Toolbar>
-                    <Typography variant="h6" noWrap component="div">
-                        Permanent drawer
-                    </Typography>
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <PersonIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Profile" />
+
+
+                    </ListItemButton>
+
                 </Toolbar>
             </AppBar>
+
+
             <Drawer
                 sx={{
+
                     width: drawerWidth,
                     flexShrink: 0,
+                    zIndex: 0,
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',

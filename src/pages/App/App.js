@@ -47,7 +47,7 @@ function App() {
       ) : (
         <div className="App">
 
-          <NavBar />
+
           <SideBar2 />
           <Routes>
 
