@@ -13,7 +13,6 @@ export default function Jobs() {
   const body = (
     <div className="modal">
       <NewJob />
-      <ArtUpload />
     </div>
   );
 
