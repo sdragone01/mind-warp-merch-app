@@ -47,58 +47,138 @@ const style = {
 };
 
 export default function SideBar2() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
-  const logout = () => {
-    Fire.auth().signOut();
-  };
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-  return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-            Mindwarp Merch
-          </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="add job"
-            edge="end"
-            sx={{ mr: 2 }}
-            onClick={handleOpen}
-          >
-            <AddIcon />
-          </IconButton>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-              </Typography>
-              <List>
-                <ListItemButton component={Link} to="/spjob">
-                  Screen Print
-                </ListItemButton>
-                <ListItemButton component={Link} to="/embjob">
-                  Embroidery
-                </ListItemButton>
-                <ListItemButton component={Link} to="/hpjob">
-                  Heat Press
-                </ListItemButton>
-                <ListItemButton component={Link} to="/customjob">
-                  Custom
-                </ListItemButton>
-              </List>
+
+    const logout = () => {
+        Fire.auth().signOut();
+    }
+
+
+    return (
+        <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+                <Toolbar>
+
+                    <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
+                        Mindwarp Merch
+                    </Typography>
+                    <IconButton
+                        color="inherit"
+                        aria-label="add job"
+                        edge='end'
+                        sx={{ mr: 2 }}
+                        component={Link}
+                        href="/newjob"
+                    >
+
+                        <AddIcon />
+
+                    </IconButton>
+                    {/* <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                Text in a modal
+                            </Typography>
+                            <List>
+                                <ListItemButton component={Link} to="/spjob" >Screen Print</ListItemButton>
+                                <ListItemButton component={Link} to="/embjob" >Embroidery</ListItemButton>
+                                <ListItemButton component={Link} to="/hpjob" >Heat Press</ListItemButton>
+                                <ListItemButton component={Link} to="/customjob" >Custom</ListItemButton>
+
+                            </List>
+
+                        </Box>
+                    </Modal> */}
+
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                sx={{
+
+                    width: drawerWidth,
+                    flexShrink: 0,
+
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                        boxSizing: 'border-box',
+                    },
+                }}
+                variant="permanent"
+                anchor="left"
+            >
+
+                <Toolbar />
+                <Divider />
+                <List>
+                    <ListItemButton component={Link} to='/'>
+                        <ListItemIcon>
+                            <HomeIcon />
+                        </ListItemIcon>
+                        Home
+                    </ListItemButton>
+                    <br />
+
+                    <ListItemButton component={Link} to='/calendar'>
+
+                        <ListItemIcon>
+                            <CalendarMonthIcon />
+                        </ListItemIcon>
+                        Calendar
+                    </ListItemButton>
+
+
+                    <br />
+                    <ListItemButton component={Link} to="/jobs" >
+                        <ListItemIcon>
+                            <WorkIcon />
+                        </ListItemIcon>
+                        Jobs
+                    </ListItemButton>
+                    <br />
+                    <ListItemButton component={Link} to="/artwork" >
+                        <ListItemIcon>
+                            <WorkIcon />
+                        </ListItemIcon>
+                        Artwork
+                    </ListItemButton>
+                    <br />
+                    <ListItemButton component={Link} to="/customers">
+                        <ListItemIcon>
+                            <PersonIcon />
+                        </ListItemIcon>
+                        Customers
+                    </ListItemButton>
+
+
+                </List>
+                <Divider />
+                <List>
+                    <ListItemButton onClick={logout} >
+                        <ListItemIcon>
+                            <LogoutIcon />
+                        </ListItemIcon>
+                        Logout
+                    </ListItemButton>
+                </List>
+
+            </Drawer>
+            <Box
+                component="main"
+                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+            >
+                <Toolbar />
+
+
             </Box>
           </Modal>
         </Toolbar>
