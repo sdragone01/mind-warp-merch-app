@@ -23,6 +23,7 @@ import SpJob from '../Jobs/SpJob';
 import EmbJob from '../Jobs/EmbJob';
 import HpJob from '../Jobs/HpJob';
 import CustomJob from '../Jobs/CustomJob';
+import CustomersMain from '../CRM/CustomersMain';
 
 // styles
 import './App.css';
@@ -67,6 +68,7 @@ function App() {
             <Route path="/embjob" element={<EmbJob />} />
             <Route path="/hpjob" element={<HpJob />} />
             <Route path="/customjob" element={<CustomJob />} />
+            <Route path="/customers" element={<CustomersMain />} />
 
 
           </Routes>

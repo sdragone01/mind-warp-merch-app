@@ -144,7 +144,7 @@ export default function SideBar2() {
                         Artwork
                     </ListItemButton>
                     <br />
-                    <ListItemButton >
+                    <ListItemButton component={Link} to="/customers">
                         <ListItemIcon>
                             <PersonIcon />
                         </ListItemIcon>
