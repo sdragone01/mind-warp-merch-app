@@ -1,8 +1,17 @@
-export default function NewJob() {
+import NewJobForm from "../../components/Forms/NewJobForm";
+
+
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from "@mui/x-date-pickers";
+
+
+export default function NewJob({ children }) {
 
     return (
-        <div>
-            <h1>New Job</h1>
+        <div className="jobs-main">
+            <LocalizationProvider dateAdapter={AdapterMoment}>
+                <NewJobForm />
+            </LocalizationProvider>
         </div>
 
     )

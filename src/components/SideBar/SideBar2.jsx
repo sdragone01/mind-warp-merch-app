@@ -65,13 +65,14 @@ export default function SideBar2() {
                         aria-label="add job"
                         edge='end'
                         sx={{ mr: 2 }}
-                        onClick={handleOpen}
+                        component={Link}
+                        href="/newjob"
                     >
 
                         <AddIcon />
 
                     </IconButton>
-                    <Modal
+                    {/* <Modal
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="modal-modal-title"
@@ -90,7 +91,7 @@ export default function SideBar2() {
                             </List>
 
                         </Box>
-                    </Modal>
+                    </Modal> */}
 
                 </Toolbar>
             </AppBar>
