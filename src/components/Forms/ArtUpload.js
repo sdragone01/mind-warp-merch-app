@@ -1,69 +1,53 @@
-import { Component, useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
 import { storage } from "../../config/Fire";
-import Fire from "../../config/Fire";
-import { ref } from "firebase/storage";
-import Button from "@mui/material/Button";
-import Input from "@mui/material/Input";
-import UploadButtons from "./UploadButton";
+import { v4 } from "uuid";
 
-export default class ArtUpload extends Component {
-  state = {
-    imageName: "",
-    imageUrls: [],
+function ArtUpload() {
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
+
+  const imagesListRef = ref(storage, "images/");
+  const uploadFile = () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls((prev) => [...prev, url]);
+      });
+    });
   };
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    listAll(imagesListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageUrls((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { imageName } = this.state;
-    const uploadTask = storage.ref(`images/${imageName}`).put(imageName);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // progress function
-      },
-      (error) => {
-        // error function
-        console.log(error);
-      },
-      () => {
-        // complete function
-        storage
-          .ref("images")
-          .child(imageName)
-          .getDownloadURL()
-          .then((url) => {
-            this.setState({ imageUrls: [...this.state.imageUrls, url] });
-          });
-      }
-    );
-  };
-
-  render() {
-    return (
-      <div>
-        <form className="form" onSubmit={this.handleSubmit}>
-          <Input
-            type="text"
-            name="imageName"
-            onChange={this.handleChange}
-            value={this.state.imageName}
-            placeholder="Image Name"
-          />
-          <Input
-            type="file"
-            value={this.state.imageUrls}
-            onChange={this.handleChange}
-          />
-
-          <Button type="submit">Upload Image</Button>
-        </form>
-
-        <UploadButtons />
-      </div>
-    );
-  }
+  return (
+    <div className="form">
+      <input
+        type="file"
+        onChange={(event) => {
+          setImageUpload(event.target.files[0]);
+        }}
+      />
+      <button onClick={uploadFile}> Upload Image</button>
+      {imageUrls.map((url) => {
+        return <img src={url} />;
+      })}
+    </div>
+  );
 }
+
+export default ArtUpload;
