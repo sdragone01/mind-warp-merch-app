@@ -4,6 +4,7 @@ import Fire from "../../config/Fire";
 import { ref } from "firebase/storage";
 import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
+import UploadButtons from "./UploadButton";
 
 export default class ArtUpload extends Component {
   state = {
@@ -44,7 +45,7 @@ export default class ArtUpload extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="form" onSubmit={this.handleSubmit}>
           <Input
             type="text"
             name="imageName"
@@ -52,10 +53,16 @@ export default class ArtUpload extends Component {
             value={this.state.imageName}
             placeholder="Image Name"
           />
-          <Input type="file" onChange={this.handleChange} />
+          <Input
+            type="file"
+            value={this.state.imageUrls}
+            onChange={this.handleChange}
+          />
 
           <Button type="submit">Upload Image</Button>
         </form>
+
+        <UploadButtons />
       </div>
     );
   }
