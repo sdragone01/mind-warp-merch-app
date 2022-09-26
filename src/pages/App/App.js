@@ -53,7 +53,7 @@ function App() {
 
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
-            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/calendar" element={<Schedule />} />
             <Route path="/artwork" element={<Art />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/jobs" element={<Jobs />} />

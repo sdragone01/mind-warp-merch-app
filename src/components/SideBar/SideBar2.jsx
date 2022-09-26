@@ -1,12 +1,14 @@
 import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/material';
 import Fire from '../../config/Fire';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+
+
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
+
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -18,6 +20,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import WorkIcon from '@mui/icons-material/Work';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
+import HomeIcon from '@mui/icons-material/Home';
 
 const drawerWidth = 240;
 
@@ -71,18 +74,36 @@ export default function SideBar2() {
                 <Toolbar />
                 <Divider />
                 <List>
-                    <ListItemButton >
+                    <ListItemButton component={Link} to='/'>
+                        <ListItemIcon>
+                            <HomeIcon />
+                        </ListItemIcon>
+                        Home
+                    </ListItemButton>
+                    <br />
+
+                    <ListItemButton component={Link} to='/calendar'>
+
                         <ListItemIcon>
                             <CalendarMonthIcon />
                         </ListItemIcon>
                         Calendar
                     </ListItemButton>
+
+
                     <br />
-                    <ListItemButton >
+                    <ListItemButton component={Link} to="/jobs" >
                         <ListItemIcon>
                             <WorkIcon />
                         </ListItemIcon>
                         Jobs
+                    </ListItemButton>
+                    <br />
+                    <ListItemButton component={Link} to="/artwork" >
+                        <ListItemIcon>
+                            <WorkIcon />
+                        </ListItemIcon>
+                        Artwork
                     </ListItemButton>
                     <br />
                     <ListItemButton >
@@ -112,6 +133,6 @@ export default function SideBar2() {
                 <Toolbar />
 
             </Box>
-        </Box>
+        </Box >
     );
 }
