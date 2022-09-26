@@ -47,8 +47,9 @@ function App() {
       ) : (
         <div className="App">
 
-          <SideBar />
+          <NavBar />
           <Routes>
+
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/schedule" element={<Schedule />} />

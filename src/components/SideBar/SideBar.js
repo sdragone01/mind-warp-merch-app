@@ -16,7 +16,7 @@ import AvatarImg from '../../assets/illustration_avatar.png';
 import userAvatar from '../../assets/avatar_default.jpeg';
 //
 import navConfig from './NavConfig';
-import Fire from '../../config/Fire';
+import Fire from '../../config/Fire'
 
 // ----------------------------------------------------------------------
 
