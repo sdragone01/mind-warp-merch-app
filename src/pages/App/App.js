@@ -18,6 +18,11 @@ import Home from '../Home/Home';
 import Art from '../Art/Art';
 import Settings from '../Settings/Settings';
 import Jobs from '../Jobs/Jobs';
+import NewJob from '../Jobs/NewJob';
+import SpJob from '../Jobs/SpJob';
+import EmbJob from '../Jobs/EmbJob';
+import HpJob from '../Jobs/HpJob';
+import CustomJob from '../Jobs/CustomJob';
 
 // styles
 import './App.css';
@@ -57,6 +62,12 @@ function App() {
             <Route path="/artwork" element={<Art />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="/newjob" element={<NewJob />} />
+            <Route path="/spjob" element={<SpJob />} />
+            <Route path="/embjob" element={<EmbJob />} />
+            <Route path="/hpjob" element={<HpJob />} />
+            <Route path="/customjob" element={<CustomJob />} />
+
 
           </Routes>
 
