@@ -5,29 +5,12 @@ import { useState } from "react";
 import ArtUpload from "../../components/Forms/ArtUpload";
 
 export default function Jobs() {
-  const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const body = (
-    <div className="modal">
-      <NewJob />
-    </div>
-  );
 
   return (
     <div className="jobs-main">
       <h1>Jobs</h1>
-      <button onClick={handleOpen}>New Job</button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        {body}
-      </Modal>
+
     </div>
   );
 }
