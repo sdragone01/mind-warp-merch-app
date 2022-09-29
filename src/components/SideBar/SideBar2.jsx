@@ -48,38 +48,38 @@ const style = {
 
 export default function SideBar2() {
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
 
-    const logout = () => {
-        Fire.auth().signOut();
-    }
+  const logout = () => {
+    Fire.auth().signOut();
+  }
 
 
-    return (
-        <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-                <Toolbar>
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <Toolbar>
 
-                    <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
-                        Mindwarp Merch
-                    </Typography>
-                    <IconButton
-                        color="inherit"
-                        aria-label="add job"
-                        edge='end'
-                        sx={{ mr: 2 }}
-                        component={Link}
-                        href="/newjob"
-                    >
+          <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
+            Mindwarp Merch
+          </Typography>
+          <IconButton
+            color="inherit"
+            aria-label="add job"
+            edge='end'
+            sx={{ mr: 2 }}
+            component={Link}
+            href="/newjob"
+          >
 
-                        <AddIcon />
+            <AddIcon />
 
-                    </IconButton>
-                    {/* <Modal
+          </IconButton>
+          {/* <Modal
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="modal-modal-title"
@@ -100,106 +100,27 @@ export default function SideBar2() {
                         </Box>
                     </Modal> */}
 
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                sx={{
-
-                    width: drawerWidth,
-                    flexShrink: 0,
-
-                    '& .MuiDrawer-paper': {
-                        width: drawerWidth,
-                        boxSizing: 'border-box',
-                    },
-                }}
-                variant="permanent"
-                anchor="left"
-            >
-
-                <Toolbar />
-                <Divider />
-                <List>
-                    <ListItemButton component={Link} to='/'>
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        Home
-                    </ListItemButton>
-                    <br />
-
-                    <ListItemButton component={Link} to='/calendar'>
-
-                        <ListItemIcon>
-                            <CalendarMonthIcon />
-                        </ListItemIcon>
-                        Calendar
-                    </ListItemButton>
-
-
-                    <br />
-                    <ListItemButton component={Link} to="/jobs" >
-                        <ListItemIcon>
-                            <WorkIcon />
-                        </ListItemIcon>
-                        Jobs
-                    </ListItemButton>
-                    <br />
-                    <ListItemButton component={Link} to="/artwork" >
-                        <ListItemIcon>
-                            <WorkIcon />
-                        </ListItemIcon>
-                        Artwork
-                    </ListItemButton>
-                    <br />
-                    <ListItemButton component={Link} to="/customers">
-                        <ListItemIcon>
-                            <PersonIcon />
-                        </ListItemIcon>
-                        Customers
-                    </ListItemButton>
-
-
-                </List>
-                <Divider />
-                <List>
-                    <ListItemButton onClick={logout} >
-                        <ListItemIcon>
-                            <LogoutIcon />
-                        </ListItemIcon>
-                        Logout
-                    </ListItemButton>
-                </List>
-
-            </Drawer>
-            <Box
-                component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-            >
-                <Toolbar />
-
-
-            </Box>
-          </Modal>
         </Toolbar>
       </AppBar>
       <Drawer
         sx={{
+
           width: drawerWidth,
           flexShrink: 0,
 
-          "& .MuiDrawer-paper": {
+          '& .MuiDrawer-paper': {
             width: drawerWidth,
-            boxSizing: "border-box",
+            boxSizing: 'border-box',
           },
         }}
         variant="permanent"
         anchor="left"
       >
+
         <Toolbar />
         <Divider />
         <List>
-          <ListItemButton component={Link} to="/">
+          <ListItemButton component={Link} to='/'>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
@@ -207,22 +128,24 @@ export default function SideBar2() {
           </ListItemButton>
           <br />
 
-          <ListItemButton component={Link} to="/calendar">
+          <ListItemButton component={Link} to='/calendar'>
+
             <ListItemIcon>
               <CalendarMonthIcon />
             </ListItemIcon>
             Calendar
           </ListItemButton>
 
+
           <br />
-          <ListItemButton component={Link} to="/jobs">
+          <ListItemButton component={Link} to="/jobs" >
             <ListItemIcon>
               <WorkIcon />
             </ListItemIcon>
             Jobs
           </ListItemButton>
           <br />
-          <ListItemButton component={Link} to="/artwork">
+          <ListItemButton component={Link} to="/artwork" >
             <ListItemIcon>
               <WorkIcon />
             </ListItemIcon>
@@ -235,22 +158,27 @@ export default function SideBar2() {
             </ListItemIcon>
             Customers
           </ListItemButton>
+
+
         </List>
         <Divider />
         <List>
-          <ListItemButton onClick={logout}>
+          <ListItemButton onClick={logout} >
             <ListItemIcon>
               <LogoutIcon />
             </ListItemIcon>
             Logout
           </ListItemButton>
         </List>
+
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
+
+
       </Box>
     </Box>
   );
