@@ -3,9 +3,8 @@ import "./Customers.css";
 
 export default function Customers() {
   return (
-    <div className="customers-main">
+    <div className="customer-page">
       <h1>Customers</h1>
-      <CustomerForm />
     </div>
   );
 }
