@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import Fire from "../../config/Fire";
-import { AddressAutofill } from '@mapbox/search-js-react';
+import { AddressAutofill } from "@mapbox/search-js-react";
 //MUI
 
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { Button } from '@mui/material';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { Button } from "@mui/material";
 
 export default class CustomerForm2 extends Component {
-
   state = {
     address: "",
     apartment: "",
@@ -20,16 +19,13 @@ export default class CustomerForm2 extends Component {
     state: "",
     country: "",
     postcode: "",
-
   };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-
   };
 
   handleSubmit = (e) => {
-
     e.preventDefault();
     const db = Fire.firestore();
     db.collection("customers").add({
@@ -39,7 +35,6 @@ export default class CustomerForm2 extends Component {
       state: this.state.state,
       country: this.state.country,
       postcode: this.state.postcode,
-
     });
     this.setState({
       address: "",
@@ -48,25 +43,26 @@ export default class CustomerForm2 extends Component {
       state: "",
       country: "",
       postcode: "",
-
     });
-
   };
 
   render() {
-
     return (
       <Box
         className="customer-form"
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
+          "& > :not(style)": { m: 1, width: "25ch" },
         }}
         noValidate
         autoComplete="off"
         onSubmit={this.handleSubmit}
       >
-        <AddressAutofill accessToken={"pk.eyJ1Ijoic2RyYWdvbmUwMSIsImEiOiJjbDhvbnhnaGoxaDNzM3ZvZ24yMDFuZ3RhIn0.nxfRfhk5TMRi2zw_OCSX2w"}>
+        <AddressAutofill
+          accessToken={
+            "pk.eyJ1Ijoic2RyYWdvbmUwMSIsImEiOiJjbDhvbnhnaGoxaDNzM3ZvZ24yMDFuZ3RhIn0.nxfRfhk5TMRi2zw_OCSX2w"
+          }
+        >
           <TextField
             className="customer-input"
             id="outlined-basic"
@@ -77,7 +73,6 @@ export default class CustomerForm2 extends Component {
             value={this.state.address}
             onChange={(e) => this.setState({ address: e.target.value })}
           />
-          <br />
 
           <br />
           <br />
@@ -87,7 +82,6 @@ export default class CustomerForm2 extends Component {
             id="outlined-basic"
             label="Apartment"
             variant="outlined"
-
             type="text"
             name="apartment"
             placeholder="Apartment"
@@ -101,11 +95,9 @@ export default class CustomerForm2 extends Component {
 
           <TextField
             className="customer-input"
-
             id="outlined-basic"
             label="City"
             variant="outlined"
-
             type="text"
             name="city"
             placeholder="City"
@@ -161,17 +153,12 @@ export default class CustomerForm2 extends Component {
             value={this.state.postcode}
             autoComplete="shipping postal-code"
           />
-
-
         </AddressAutofill>
 
-        <Button variant="contained" type="submit" onClick={this.handleSubmit}>Submit</Button>
-
+        <Button variant="contained" type="submit" onClick={this.handleSubmit}>
+          Submit
+        </Button>
       </Box>
-
-
     );
   }
-
 }
-
