@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import Fire from "../../config/Fire";
-import { AddressAutofill } from '@mapbox/search-js-react';
+import { AddressAutofill } from "@mapbox/search-js-react";
 //MUI
 
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { Button } from '@mui/material';
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { Button } from "@mui/material";
 
 export default class CustomerForm2 extends Component {
-
   state = {
     address: "",
     apartment: "",
@@ -20,16 +19,13 @@ export default class CustomerForm2 extends Component {
     state: "",
     country: "",
     postcode: "",
-
   };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-
   };
 
   handleSubmit = (e) => {
-
     e.preventDefault();
     const db = Fire.firestore();
     db.collection("customers").add({
@@ -39,7 +35,6 @@ export default class CustomerForm2 extends Component {
       state: this.state.state,
       country: this.state.country,
       postcode: this.state.postcode,
-
     });
     this.setState({
       address: "",
@@ -48,13 +43,10 @@ export default class CustomerForm2 extends Component {
       state: "",
       country: "",
       postcode: "",
-
     });
-
   };
 
   render() {
-
     return (
       <>
         <AddressAutofill
@@ -172,8 +164,7 @@ export default class CustomerForm2 extends Component {
 
       </>
 
+>>>>>>> main
     );
   }
-
 }
-
