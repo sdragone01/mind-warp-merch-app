@@ -1,8 +1,23 @@
 body {
   background: #f7f7f7;
   color: rgb(0, 0, 0);
-  display: block;
+
   margin: 0px;
 
+}
 
+.App {
+  display: grid;
+}
+
+.sidebar {
+  position: absolute;
+}
+
+.main {
+  position: absolute;
+  left: 200px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
 }

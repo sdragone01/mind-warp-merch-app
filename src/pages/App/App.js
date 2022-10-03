@@ -46,25 +46,29 @@ function App() {
         <Auth />
       ) : (
         <div className="App">
-          <SideBar2 />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Home" element={<Home />} />
-            <Route path="/calendar" element={<Schedule />} />
-            <Route path="/artwork" element={<Art />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/newjob" element={<NewJob />} />
-            <Route path="/spjob" element={<SpJob />} />
-            <Route path="/embjob" element={<EmbJob />} />
-            <Route path="/hpjob" element={<HpJob />} />
-            <Route path="/customjob" element={<CustomJob />} />
+          <div className="sidebar">
+            <SideBar2 />
+          </div>
+          <div className="main">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Home" element={<Home />} />
+              <Route path="/calendar" element={<Schedule />} />
+              <Route path="/artwork" element={<Art />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/newjob" element={<NewJob />} />
+              <Route path="/spjob" element={<SpJob />} />
+              <Route path="/embjob" element={<EmbJob />} />
+              <Route path="/hpjob" element={<HpJob />} />
+              <Route path="/customjob" element={<CustomJob />} />
 
-            <Route path="/customers" element={<CustomersMain />} />
+              <Route path="/customers" element={<CustomersMain />} />
 
 
 
-          </Routes>
+            </Routes>
+          </div>
         </div>
       )}
     </div>

@@ -48,117 +48,123 @@ export default class CustomerForm2 extends Component {
 
   render() {
     return (
-      <Box
-        className="customer-form"
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
-        }}
-        noValidate
-        autoComplete="off"
-        onSubmit={this.handleSubmit}
-      >
+      <>
         <AddressAutofill
-          accessToken={
-            "pk.eyJ1Ijoic2RyYWdvbmUwMSIsImEiOiJjbDhvbnhnaGoxaDNzM3ZvZ24yMDFuZ3RhIn0.nxfRfhk5TMRi2zw_OCSX2w"
-          }
-        >
-          <TextField
-            className="customer-input"
-            id="outlined-basic"
-            label="Address"
-            variant="outlined"
-            name="address"
-            autoComplete="shipping address-line1"
-            value={this.state.address}
-            onChange={(e) => this.setState({ address: e.target.value })}
-          />
 
-          <br />
-          <br />
+          accessToken={"pk.eyJ1Ijoic2RyYWdvbmUwMSIsImEiOiJjbDhvbnhnaGoxaDNzM3ZvZ24yMDFuZ3RhIn0.nxfRfhk5TMRi2zw_OCSX2w"}>
 
-          <TextField
-            className="customer-input"
-            id="outlined-basic"
-            label="Apartment"
-            variant="outlined"
-            type="text"
-            name="apartment"
-            placeholder="Apartment"
-            onChange={this.handleChange}
-            value={this.state.apartment}
-            autoComplete="shipping address-line2"
-          />
+          <Box
+            className="customer-form"
+            component="form"
+            sx={{
+              display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left', maxWidth: '400px', padding: '20px', rowGap: 2,
+            }}
+            noValidate
+            autoComplete="off"
+            onSubmit={this.handleSubmit}
+          >
 
-          <br />
-          <br />
+            <TextField
 
-          <TextField
-            className="customer-input"
-            id="outlined-basic"
-            label="City"
-            variant="outlined"
-            type="text"
-            name="city"
-            placeholder="City"
-            onChange={this.handleChange}
-            value={this.state.city}
-            autoComplete="shipping address-level2"
-          />
 
-          <br />
-          <br />
+              id="outlined-basic"
+              label="Address"
+              variant="outlined"
+              name="address"
+              autoComplete="shipping address-line1"
+              value={this.state.address}
+              onChange={(e) => this.setState({ address: e.target.value })}
+            />
 
-          <TextField
-            className="customer-input"
-            id="outlined-basic"
-            label="State"
-            variant="outlined"
-            type="text"
-            name="state"
-            placeholder="State"
-            onChange={this.handleChange}
-            value={this.state.state}
-            autoComplete="shipping address-level1"
-          />
 
-          <br />
-          <br />
+            <TextField
 
-          <TextField
-            className="customer-input"
-            id="outlined-basic"
-            label="Country"
-            variant="outlined"
-            type="text"
-            name="country"
-            placeholder="Country"
-            onChange={this.handleChange}
-            value={this.state.country}
-            autoComplete="shipping country"
-          />
+              id="outlined-basic"
+              label="Apartment"
+              variant="outlined"
 
-          <br />
-          <br />
+              type="text"
+              name="apartment"
+              placeholder="Apartment"
+              onChange={this.handleChange}
+              value={this.state.apartment}
+              autoComplete="shipping address-line2"
+            />
 
-          <TextField
-            className="customer-input"
-            id="outlined-basic"
-            label="Postcode"
-            variant="outlined"
-            type="text"
-            name="postcode"
-            placeholder="Postcode"
-            onChange={this.handleChange}
-            value={this.state.postcode}
-            autoComplete="shipping postal-code"
-          />
+
+
+            <TextField
+
+
+              id="outlined-basic"
+              label="City"
+              variant="outlined"
+
+              type="text"
+              name="city"
+              placeholder="City"
+              onChange={this.handleChange}
+              value={this.state.city}
+              autoComplete="shipping address-level2"
+            />
+
+
+
+
+            <TextField
+
+              id="outlined-basic"
+              label="State"
+              variant="outlined"
+              type="text"
+              name="state"
+              placeholder="State"
+              onChange={this.handleChange}
+              value={this.state.state}
+              autoComplete="shipping address-level1"
+            />
+
+
+
+
+            <TextField
+
+              id="outlined-basic"
+              label="Country"
+              variant="outlined"
+              type="text"
+              name="country"
+              placeholder="Country"
+              onChange={this.handleChange}
+              value={this.state.country}
+              autoComplete="shipping country"
+            />
+
+
+
+
+            <TextField
+
+              id="outlined-basic"
+              label="Postcode"
+              variant="outlined"
+              type="text"
+              name="postcode"
+              placeholder="Postcode"
+              onChange={this.handleChange}
+              value={this.state.postcode}
+              autoComplete="shipping postal-code"
+            />
+            <Button variant="contained" type="submit" onClick={this.handleSubmit}>Submit</Button>
+          </Box>
         </AddressAutofill>
 
-        <Button variant="contained" type="submit" onClick={this.handleSubmit}>
-          Submit
-        </Button>
-      </Box>
+
+
+
+      </>
+
+>>>>>>> main
     );
   }
 }

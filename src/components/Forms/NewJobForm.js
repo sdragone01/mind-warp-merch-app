@@ -13,7 +13,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Button } from '@mui/material';
 
-
+import './NewJobForm.css'
+import { display } from '@mui/system';
 
 
 
@@ -61,12 +62,14 @@ export default class NewJobForm extends Component {
             <Box
                 component="form"
                 sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
+                    display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left', maxWidth: '400px', padding: '20px', rowGap: 2,
                 }}
+
                 noValidate
                 autoComplete="off"
                 onSubmit={this.handleSubmit}
             >
+
                 <TextField
                     id="outlined-basic"
                     label="PO"
@@ -75,9 +78,11 @@ export default class NewJobForm extends Component {
                     value={this.state.po}
                     onChange={this.handleChange}
                 />
-                <FormControl >
+
+                <FormControl  >
                     <InputLabel id="demo-simple-select-label">Delivery Method</InputLabel>
                     <Select
+
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={this.state.deliveryMethod}
@@ -85,23 +90,31 @@ export default class NewJobForm extends Component {
                         name="deliveryMethod"
                         onChange={this.handleChange}
                     >
+
                         <MenuItem value={true}>Delivery</MenuItem>
                         <MenuItem value={false}>Pickup</MenuItem>
                     </Select>
                 </FormControl>
+
+
                 <DatePicker
+
                     label="Created"
                     name="created"
                     value={this.state.created}
                     onChange={this.handleChange}
                 />
+
                 <DatePicker
+
                     label="Production Due"
                     name="prodDue"
                     value={this.state.prodDue}
                     onChange={this.handleChange}
                 />
+
                 <DatePicker
+
                     label="Customer Due"
                     name="customerDue"
                     value={this.state.customerDue}
@@ -111,7 +124,7 @@ export default class NewJobForm extends Component {
                 <Button variant="contained" type="submit">Submit</Button>
 
 
-            </Box>
+            </Box >
         )
 
     }
