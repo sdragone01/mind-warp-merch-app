@@ -9,16 +9,13 @@ import CustomerForm2 from "../../components/Forms/CustomerForm2";
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-
-
-
+import Select from '@mui/material/Select';
+import fire from "../../config/Fire";
+import { getDatabase, ref, set, onValue, push, child, get, query } from "firebase/database";
 
 export default function NewJob() {
 
-    const [open, setOpen] = React.useState(false);
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     const toggleOpen = () => {
         setOpen(!open);
@@ -49,6 +46,19 @@ export default function NewJob() {
         console.log(jobArray)
     }
 
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    const [customerFormModal, setCustomerFormModal] = React.useState(false);
+    const toggleCustomerFormModal = () => {
+        setCustomerFormModal(!customerFormModal);
+    }
+
+
+
+
+
 
 
 
@@ -63,7 +73,39 @@ export default function NewJob() {
 
                     <div className="js-crm">
                         <h3>Customer</h3>
-                        <CustomerForm2 />
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+
+                            label="Customer"
+                        >
+
+                            <option onClick={toggleCustomerFormModal}>+ add New</option>
+                            <Modal
+                                open={customerFormModal}
+                                onClose={toggleCustomerFormModal}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    width: 400,
+                                    bgcolor: 'background.paper',
+                                    border: '2px solid #000',
+                                    boxShadow: 24,
+                                    p: 4,
+
+                                }}>
+
+
+                                    <CustomerForm2 />
+
+                                </Box>
+                            </Modal>
+                        </Select>
                     </div>
                     <div className="js-container">
                         <h3>Job Details</h3>
