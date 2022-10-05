@@ -8,11 +8,18 @@ export default function Home() {
 
 
     return (
-        <div className="home-main">
-            <h1>Home</h1>
+        <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginLeft: '5%',
+            marginTop: '10%',
+            justifyContent: 'center',
+            alignItems: 'center',
+
+        }}>
+
             <CustomersMain2 />
-
-        </div>
-
-    );
+        </Box>
+    )
 }
+
