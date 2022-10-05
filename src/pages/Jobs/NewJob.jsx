@@ -12,7 +12,8 @@ import Box from '@mui/material/Box';
 
 
 
-export default function NewJob({ children }) {
+
+export default function NewJob() {
 
     const [open, setOpen] = React.useState(false);
 
@@ -23,29 +24,31 @@ export default function NewJob({ children }) {
         setOpen(!open);
     }
 
-
+    const [jobArray, setJobArray] = useState([]);
     const [sCounter, setSCounter] = useState(0);
     const [eCounter, setECounter] = useState(0);
     const [hCounter, setHCounter] = useState(0);
     const [cCounter, setCCounter] = useState(0);
 
-    const handleClick = (e) => {
-        setOpen(false)
 
-        if (e.target.name === "Screen") {
-            setSCounter(sCounter + 1);
-        }
-        if (e.target.name === "Emb") {
-            setECounter(eCounter + 1);
-        }
-        if (e.target.name === "Heat") {
-            setHCounter(hCounter + 1);
-        }
-        if (e.target.name === "Custom") {
-            setCCounter(cCounter + 1);
-        }
+    const addJob = (e) => {
 
+        handleClose()
+        if (e.target.name === "s") {
+            jobArray.push('s')
+        } if (e.target.name === "e") {
+            jobArray.push('e')
+        }
+        if (e.target.name === "h") {
+            jobArray.push('h')
+        }
+        if (e.target.name === "c") {
+            jobArray.push('c')
+        }
+        setJobArray(jobArray)
+        console.log(jobArray)
     }
+
 
 
 
@@ -94,56 +97,55 @@ export default function NewJob({ children }) {
                     }}>
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', columnGap: 5 }}>
 
-                            <Button variant="contained" color="primary" className="js-btn" name="Screen" onClick={handleClick}> Screen Print </Button>
-                            <Button variant="contained" color="primary" className="js-btn" name='Emb' onClick={handleClick}> Embroidery </Button>
-                            <Button variant="contained" color="primary" className="js-btn" name='Heat' onClick={handleClick}> Heat Press </Button>
-                            <Button variant="contained" color="primary" className="js-btn" name='Custom' onClick={handleClick}> Custom </Button>
+                            <Button variant="contained" color="primary" className="js-btn" name="s" onClick={addJob}> Screen Print </Button>
+                            <Button variant="contained" color="primary" className="js-btn" name="e" onClick={addJob}> Embroidery </Button>
+                            <Button variant="contained" color="primary" className="js-btn" name="h" onClick={addJob}> Heat Press </Button>
+                            <Button variant="contained" color="primary" className="js-btn" name="c" onClick={addJob}> Custom </Button>
+
 
                         </Box>
                     </Box>
 
+
                 </Modal>
-                <div className="screen-Print-form-counter">
-                    {Array.from(Array(sCounter)).map((e, i) => {
-                        return (
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', columnGap: 5 }}>
 
-                                <h1>Screen Print Form Goes Here</h1>
-                            </Box>
-                        )
+
+
+                <div className="js-forms">
+                    {jobArray.map((form) => {
+                        if (form === 's') {
+                            return (
+                                <div className="js-form">
+                                    <h3>Screen Print Form Here</h3>
+                                </div>
+                            )
+
+                        }
+                        if (form === 'e') {
+                            return (
+                                <div className="js-form">
+                                    <h3>Embroidery Form Here</h3>
+                                </div>
+                            )
+
+                        }
+                        if (form === 'h') {
+                            return (
+                                <div className="js-form">
+                                    <h3>Heat Press Form Here</h3>
+                                </div>
+                            )
+                        }
+                        if (form === 'c') {
+                            return (
+                                <div className="js-form">
+                                    <h3>Custom Form Here</h3>
+                                </div>
+                            )
+                        }
                     })}
                 </div>
 
-                <div className="embroidery-form-counter">
-                    {Array.from(Array(eCounter)).map((e, i) => {
-                        return (
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', columnGap: 5 }}>
-                                <h1>Embroidery Form Goes Here</h1>
-                            </Box>
-                        )
-                    })}
-                </div>
-
-                <div className="heat-press-form-counter">
-                    {Array.from(Array(hCounter)).map((e, i) => {
-                        return (
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', columnGap: 5 }}>
-                                <h1>Heat Press Form Goes Here</h1>
-                            </Box>
-                        )
-                    })}
-                </div>
-
-                <div className="custom-form-counter">
-                    {Array.from(Array(cCounter)).map((e, i) => {
-                        return (
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', columnGap: 5 }}>
-                                <h1>Custom Form Goes Here</h1>
-
-                            </Box>
-                        )
-                    })}
-                </div>
 
 
 
