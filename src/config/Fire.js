@@ -12,6 +12,8 @@ const config = {
   messagingSenderId: "141573362535",
   appId: "1:141573362535:web:f229f26cff8fea45eb95c2",
   measurementId: "G-WREVQX3LS0",
+  databaseURL: 'https://mind-warp-merch-v1-default-rtdb.firebaseio.com/'
+
 };
 
 const fire = firebase.initializeApp(config);
