@@ -164,7 +164,7 @@ export default class CustomerForm2 extends Component {
 
       </>
 
->>>>>>> main
+
     );
   }
 }
