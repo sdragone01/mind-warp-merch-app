@@ -29,6 +29,10 @@ export default class CustomerForm2 extends Component {
     e.preventDefault();
     const db = Fire.firestore();
     db.collection("customers").add({
+      company: this.state.company,
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
       address: this.state.address,
       apartment: this.state.apartment,
       city: this.state.city,
@@ -37,6 +41,10 @@ export default class CustomerForm2 extends Component {
       postcode: this.state.postcode,
     });
     this.setState({
+      company: "",
+      name: "",
+      email: "",
+      phone: "",
       address: "",
       apartment: "",
       city: "",
@@ -70,6 +78,38 @@ export default class CustomerForm2 extends Component {
             autoComplete="off"
             onSubmit={this.handleSubmit}
           >
+            <TextField
+              id="outlined-basic"
+              label="Company"
+              variant="outlined"
+              name="company"
+              value={this.state.company}
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Full Name"
+              variant="outlined"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Phone"
+              variant="outlined"
+              name="phone"
+              value={this.state.phone}
+              onChange={this.handleChange}
+            />
             <TextField
               id="outlined-basic"
               label="Address"
@@ -149,7 +189,6 @@ export default class CustomerForm2 extends Component {
           </Box>
         </AddressAutofill>
       </>
-
     );
   }
 }
