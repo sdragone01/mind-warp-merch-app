@@ -50,23 +50,27 @@ export default class CustomerForm2 extends Component {
     return (
       <>
         <AddressAutofill
-
-          accessToken={"pk.eyJ1Ijoic2RyYWdvbmUwMSIsImEiOiJjbDhvbnhnaGoxaDNzM3ZvZ24yMDFuZ3RhIn0.nxfRfhk5TMRi2zw_OCSX2w"}>
-
+          accessToken={
+            "pk.eyJ1Ijoic2RyYWdvbmUwMSIsImEiOiJjbDhvbnhnaGoxaDNzM3ZvZ24yMDFuZ3RhIn0.nxfRfhk5TMRi2zw_OCSX2w"
+          }
+        >
           <Box
             className="customer-form"
             component="form"
             sx={{
-              display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left', maxWidth: '400px', padding: '20px', rowGap: 2,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "left",
+              maxWidth: "400px",
+              padding: "20px",
+              rowGap: 2,
             }}
             noValidate
             autoComplete="off"
             onSubmit={this.handleSubmit}
           >
-
             <TextField
-
-
               id="outlined-basic"
               label="Address"
               variant="outlined"
@@ -76,13 +80,10 @@ export default class CustomerForm2 extends Component {
               onChange={(e) => this.setState({ address: e.target.value })}
             />
 
-
             <TextField
-
               id="outlined-basic"
               label="Apartment"
               variant="outlined"
-
               type="text"
               name="apartment"
               placeholder="Apartment"
@@ -91,15 +92,10 @@ export default class CustomerForm2 extends Component {
               autoComplete="shipping address-line2"
             />
 
-
-
             <TextField
-
-
               id="outlined-basic"
               label="City"
               variant="outlined"
-
               type="text"
               name="city"
               placeholder="City"
@@ -108,11 +104,7 @@ export default class CustomerForm2 extends Component {
               autoComplete="shipping address-level2"
             />
 
-
-
-
             <TextField
-
               id="outlined-basic"
               label="State"
               variant="outlined"
@@ -124,11 +116,7 @@ export default class CustomerForm2 extends Component {
               autoComplete="shipping address-level1"
             />
 
-
-
-
             <TextField
-
               id="outlined-basic"
               label="Country"
               variant="outlined"
@@ -140,11 +128,7 @@ export default class CustomerForm2 extends Component {
               autoComplete="shipping country"
             />
 
-
-
-
             <TextField
-
               id="outlined-basic"
               label="Postcode"
               variant="outlined"
@@ -155,15 +139,16 @@ export default class CustomerForm2 extends Component {
               value={this.state.postcode}
               autoComplete="shipping postal-code"
             />
-            <Button variant="contained" type="submit" onClick={this.handleSubmit}>Submit</Button>
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={this.handleSubmit}
+            >
+              Submit
+            </Button>
           </Box>
         </AddressAutofill>
-
-
-
-
       </>
-
 
     );
   }
