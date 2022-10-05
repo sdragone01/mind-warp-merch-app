@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Fire from "../../config/Fire";
+
 import { AddressAutofill } from "@mapbox/search-js-react";
 //MUI
 
@@ -10,35 +10,57 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
+import fire from "../../config/Fire";
+import { getDatabase, ref, push, query } from 'firebase/database';
+
+
 
 export default class CustomerForm2 extends Component {
-  state = {
-    address: "",
-    apartment: "",
-    city: "",
-    state: "",
-    country: "",
-    postcode: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      company: "",
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      apartment: "",
+      city: "",
+      state: "",
+      country: "",
+      postcode: "",
+
+      currentUID: fire.auth().currentUser.uid
+    }
+  }
+
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+
+
+
   handleSubmit = (e) => {
     e.preventDefault();
-    const db = Fire.firestore();
-    db.collection("customers").add({
-      company: this.state.company,
-      name: this.state.name,
-      email: this.state.email,
-      phone: this.state.phone,
-      address: this.state.address,
-      apartment: this.state.apartment,
-      city: this.state.city,
-      state: this.state.state,
-      country: this.state.country,
-      postcode: this.state.postcode,
+    const { company, name, email, phone, address, apartment, city, state, country, postcode, currentUID } = this.state;
+    const db = getDatabase();
+
+
+    push(ref(db, 'Customers/'), {
+      company,
+      name,
+      email,
+      phone,
+      address,
+      apartment,
+      city,
+      state,
+      country,
+      postcode,
+
+      currentUID
     });
     this.setState({
       company: "",
@@ -52,7 +74,12 @@ export default class CustomerForm2 extends Component {
       country: "",
       postcode: "",
     });
+
+
+
   };
+
+
 
   render() {
     return (
