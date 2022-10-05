@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import fire from "../../config/Fire";
 import { getDatabase, ref, set, onValue, push, child, get, query, remove } from "firebase/database";
 import React from "react";
+import { Button } from "@mui/material";
 
 const db = getDatabase();
 
@@ -14,6 +15,7 @@ export default class CustomersMain extends React.Component {
     this.state = {
       customerArray: [],
       selectionModel: [],
+      editable: false,
 
     };
   }
@@ -42,6 +44,11 @@ export default class CustomersMain extends React.Component {
   onSelect = (selectionModel) => {
     this.setState({ selectionModel });
   };
+
+  mountEdit = () => {
+    this.setState({ editable: true });
+  };
+
 
 
 
@@ -74,13 +81,61 @@ export default class CustomersMain extends React.Component {
         sortable: false,
         width: 160,
         editable: true,
-      },
+      }, {
+
+
+        width: 100,
+        renderCell: params => {
+          if (this.state.editable) {
+
+            return (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={(params) => {
+                  const dbRef = ref(db, "Customers/");
+                  set(child(dbRef, params.id), {
+                    name: params.value,
+                    email: params.row.email,
+                    phone: params.row.phone,
+                    address: params.row.address,
+                  });
+                }}
+              >
+                Save
+              </Button>
+            );
+          } else {
+            return null
+
+          }
+        }
+      }
     ];
+
+
+
+
+
 
     return (
       <div style={{ height: 400, width: "90%" }}>
 
         <DataGrid
+
+          onCellEditStart={() => {
+            this.mountEdit(true);
+          }}
+          onCellEditCommit={(params) => {
+            const dbRef = ref(db, "Customers");
+            set(child(dbRef, params.id), {
+              name: params.value,
+              email: params.row.email,
+              phone: params.row.phone,
+              address: params.row.address,
+            });
+          }}
+
 
           rows={this.state.customerArray}
           columns={columns}
