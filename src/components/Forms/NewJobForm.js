@@ -1,6 +1,7 @@
 import { bool } from 'prop-types';
 import React, { Component } from 'react';
-import Fire from '../../config/Fire';
+import fire from '../../config/Fire';
+import { getDatabase, push, ref, onValue } from 'firebase/database';
 import DatePicker from './DatePicker/DatePicker';
 
 //MUI
@@ -28,6 +29,7 @@ export default class NewJobForm extends Component {
         customerDue: '',
         customer: '',
         job: '',
+        customerArray: [],
     }
 
     handleChange = (e) => {
@@ -36,26 +38,52 @@ export default class NewJobForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const db = Fire.firestore();
-        db.collection('jobs').add({
-            po: this.state.po,
-            deliveryMethod: this.state.deliveryMethod,
-            created: this.state.created,
-            prodDue: this.state.prodDue,
-            customerDue: this.state.customerDue,
-            customer: this.state.customer,
-            job: this.state.job,
+        const db = getDatabase();
+        const { po, deliveryMethod, created, prodDue, customerDue, customer, job } = this.state;
+        push(ref(db, 'Jobs/'), {
+            po,
+            deliveryMethod,
+            created,
+            prodDue,
+            customerDue,
+            customer,
+            job,
         });
         this.setState({
             po: '',
             deliveryMethod: bool,
-            created: '',
-            prodDue: '',
+            created: {},
+            prodDue: [],
             customerDue: '',
-            customer: '',
+            customer: {},
             job: '',
+
         });
     }
+
+    selectCustomer = (e) => {
+        this.setState({ customer: e.target.value });
+    }
+
+    customerDidMount() {
+        const dbRef = ref(getDatabase(), 'Customers');
+        onValue(dbRef, (snapshot) => {
+            const records = [];
+            snapshot.forEach((childSnapshot) => {
+                let keyName = childSnapshot.key;
+                let childData = childSnapshot.val();
+                childData.id = keyName;
+                records.push({ childData });
+            });
+            this.setState({ customerArray: records });
+
+        });
+    }
+
+
+
+
+
 
     render() {
         return (
@@ -78,6 +106,23 @@ export default class NewJobForm extends Component {
                     value={this.state.po}
                     onChange={this.handleChange}
                 />
+
+                <FormControl  >
+                    <InputLabel id="demo-simple-select-label">Customer</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={this.state.customer}
+                        label="Customer"
+                        onChange={this.selectCustomer}
+                    >
+                        {this.state.customerArray.map((customer) => {
+                            return (
+                                <MenuItem value={customer}>{customer.name}</MenuItem>
+                            )
+                        })}
+                    </Select>
+                </FormControl>
 
                 <FormControl  >
                     <InputLabel id="demo-simple-select-label">Delivery Method</InputLabel>

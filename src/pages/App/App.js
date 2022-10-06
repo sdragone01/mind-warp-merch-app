@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import SideBar2 from "../../components/SideBar/SideBar2";
 
 //page imorts
-import NavBar from "../../components/NavBar/NavBar";
+
 import Auth from "../Auth/Auth";
 
 //Route Pages
@@ -17,15 +17,13 @@ import Art from '../Art/Art';
 import Settings from '../Settings/Settings';
 import Jobs from '../Jobs/Jobs';
 import NewJob from '../Jobs/NewJob';
-import SpJob from '../Jobs/SpJob';
-import EmbJob from '../Jobs/EmbJob';
-import HpJob from '../Jobs/HpJob';
-import CustomJob from '../Jobs/CustomJob';
-import CustomersMain from '../CRM/CustomersMain';
+
+import Customers from "../Customers/Customers";
 
 
 // styles
 import "./App.css";
+
 
 function App() {
   const [user, setUser] = useState("");
@@ -58,12 +56,9 @@ function App() {
               <Route path="/settings" element={<Settings />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/newjob" element={<NewJob />} />
-              <Route path="/spjob" element={<SpJob />} />
-              <Route path="/embjob" element={<EmbJob />} />
-              <Route path="/hpjob" element={<HpJob />} />
-              <Route path="/customjob" element={<CustomJob />} />
 
-              <Route path="/customers" element={<CustomersMain />} />
+
+              <Route path="/customers" element={<Customers />} />
 
 
 
