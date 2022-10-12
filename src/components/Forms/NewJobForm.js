@@ -29,8 +29,10 @@ export default class NewJobForm extends Component {
         customerDue: '',
         customer: '',
         job: '',
-        customerArray: [],
+
     }
+
+
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -61,24 +63,28 @@ export default class NewJobForm extends Component {
         });
     }
 
+
     selectCustomer = (e) => {
         this.setState({ customer: e.target.value });
     }
 
-    customerDidMount() {
-        const dbRef = ref(getDatabase(), 'Customers');
-        onValue(dbRef, (snapshot) => {
-            const records = [];
-            snapshot.forEach((childSnapshot) => {
-                let keyName = childSnapshot.key;
-                let childData = childSnapshot.val();
-                childData.id = keyName;
-                records.push({ childData });
-            });
-            this.setState({ customerArray: records });
 
-        });
+    customersList = () => {
+        const db = getDatabase();
+        const customersRef = ref(db, 'Customers/');
+        onValue(customersRef, (snapshot) => {
+            const data = snapshot.val();
+            const customers = Object.values(data);
+            const customersList = customers.map((customer) => {
+                return (
+                    <MenuItem value={customer}>{customer.name}</MenuItem>
+                )
+            })
+            this.setState({ customersList });
+        })
     }
+    s
+
 
 
 
@@ -116,11 +122,9 @@ export default class NewJobForm extends Component {
                         label="Customer"
                         onChange={this.selectCustomer}
                     >
-                        {this.state.customerArray.map((customer) => {
-                            return (
-                                <MenuItem value={customer}>{customer.name}</MenuItem>
-                            )
-                        })}
+                        {this.customersList()}
+
+
                     </Select>
                 </FormControl>
 
